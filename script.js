@@ -1,6 +1,24 @@
 let humanScore=0;
 let computerScore=0;
 
+const btn = document.querySelector(".container");
+
+btn.addEventListener('click', (event) => {
+    let target = event.target;
+    switch(target.className){
+        case 'rock':
+            console.log("rock");
+            break;
+        case 'paper':
+            console.log("paper");
+            break;
+        case 'scissors':
+            console.log("scissors");
+            break;
+
+    }
+})
+
 function getComputerChoice(){
     let num=Math.random()*3;
     
@@ -15,13 +33,10 @@ function getComputerChoice(){
     }
 }
 
-function getHumanChoice(){
-    let ans=prompt("Please enter either rock, paper, or scissors: ");
-    return ans.toLowerCase();
-}
 
-function playRound(){
-    let humanChoice=getHumanChoice();
+
+function playRound(playerSelection){
+    let humanChoice=playerSelection;
     let computerChoice=getComputerChoice();
     if(humanChoice==computerChoice){
         console.log("It's a tie!. You both had: "+humanChoice+" "+computerChoice);
@@ -55,18 +70,7 @@ function playRound(){
 }
 
 function playGame(){
-    for(let i=0; i<5; i++){
-        playRound();
-    }
-    if(humanScore>computerScore){
-        console.log("You win the tournament");
-    }
-    else if(humanScore<computerScore){
-        console.log("You lost the tournmanet");
-    }
-    else{
-        console.log("It's a tie");
-    }
+   
 }
 
 console.log(playGame());
